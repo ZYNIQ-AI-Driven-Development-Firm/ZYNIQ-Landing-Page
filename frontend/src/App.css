@@ -1,38 +1,142 @@
-.App {
-    text-align: center;
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-.App-logo {
-    height: 40vmin;
-    pointer-events: none;
+body {
+  font-family: 'Inter', sans-serif;
+  background-color: #000000;
+  color: #FFFFFF;
+  overflow: hidden;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-    .App-logo {
-        animation: App-logo-spin infinite 20s linear;
-    }
+.glassmorphic {
+  background: rgba(10, 10, 10, 0.4);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-.App-header {
-    background-color: #0f0f10;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    font-size: calc(10px + 2vmin);
-    color: white;
+.nav-link {
+  @apply text-white/80 hover:text-white transition-colors duration-200;
 }
 
-.App-link {
-    color: #61dafb;
+.btn-primary {
+  @apply bg-red-600 hover:bg-red-700 text-white font-bold py-3 px-6 rounded-lg transition-all duration-300;
+  box-shadow: 0 0 15px rgba(234, 35, 35, 0.4);
 }
 
-@keyframes App-logo-spin {
-    from {
-        transform: rotate(0deg);
-    }
-    to {
-        transform: rotate(360deg);
-    }
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 0 25px rgba(234, 35, 35, 0.7);
+}
+
+.btn-secondary {
+  @apply bg-transparent border border-white text-white font-bold py-3 px-6 rounded-lg transition-all duration-300;
+}
+
+.btn-secondary:hover {
+  @apply bg-white text-black;
+}
+
+.fade-in {
+  animation: fadeIn 0.5s ease-out forwards;
+}
+
+.fade-out {
+  animation: fadeOut 0.5s ease-in forwards;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+}
+
+.loader {
+  @apply flex flex-col items-center justify-center text-white;
+}
+
+.loader-ring {
+  border: 4px solid rgba(255, 255, 255, 0.2);
+  border-left-color: #EA2323;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.progress-container {
+  @apply w-full max-w-sm bg-white/10 rounded-full h-2.5;
+}
+
+.progress-bar {
+  @apply bg-red-600 h-2.5 rounded-full transition-all duration-500 ease-in-out;
+}
+
+.ui-panel {
+  @apply glassmorphic rounded-2xl p-8 max-w-lg mx-auto;
+}
+
+.orb-choice {
+  @apply w-full p-4 text-center font-semibold rounded-lg border border-white/20 hover:bg-white/10 transition-colors duration-200 cursor-pointer;
+}
+
+.form-input {
+  @apply w-full bg-white/5 border border-white/20 rounded-lg px-4 py-3 text-white placeholder-white/60 focus:outline-none focus:ring-2 focus:ring-red-600;
+}
+
+.blueprint-content {
+  @apply p-4 border border-red-500/50 bg-red-500/10 rounded-lg;
+}
+
+.blueprint-points {
+  @apply list-disc list-inside space-y-2 text-white/90;
+}
+
+/* Scrollbar styling */
+.custom-scrollbar::-webkit-scrollbar {
+  width: 8px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: rgba(234, 35, 35, 0.6);
+  border-radius: 4px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: rgba(234, 35, 35, 0.8);
 }
