@@ -12,6 +12,17 @@ function App() {
   useEffect(() => {
     if (!mountRef.current) return;
 
+    // Hide loading screen after a delay
+    setTimeout(() => {
+      const loading = document.getElementById('loading');
+      if (loading) {
+        loading.style.opacity = '0';
+        setTimeout(() => {
+          loading.style.display = 'none';
+        }, 500);
+      }
+    }, 2000);
+
     // Scene setup
     const scene = new THREE.Scene();
     scene.background = new THREE.Color(0x000000);
@@ -259,7 +270,7 @@ function App() {
       </div>
 
       {/* Loading indicator */}
-      <div id="loading" className="fixed inset-0 bg-black flex items-center justify-center z-30">
+      <div id="loading" className="fixed inset-0 bg-black flex items-center justify-center z-30" style={{transition: 'opacity 0.5s ease'}}>
         <div className="text-center">
           <div className="loader-ring mx-auto mb-4"></div>
           <p className="text-white text-lg">Loading ZYNIQ Ecosystem...</p>
