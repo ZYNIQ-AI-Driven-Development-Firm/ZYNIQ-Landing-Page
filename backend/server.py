@@ -37,6 +37,26 @@ class StatusCheck(BaseModel):
 class StatusCheckCreate(BaseModel):
     client_name: str
 
+class BlueprintRequest(BaseModel):
+    system_prompt: str
+    user_query: str
+
+class BlueprintResponse(BaseModel):
+    blueprint: Dict[str, Any]
+
+class RefinementRequest(BaseModel):
+    query: str
+    initial_blueprint: Dict[str, Any]
+
+class ContactSubmission(BaseModel):
+    contact: Dict[str, str]
+    blueprint: Dict[str, Any]
+    timestamp: str
+
+class ContactResponse(BaseModel):
+    message: str
+    id: str
+
 # Add your routes to the router instead of directly to app
 @api_router.get("/")
 async def root():
